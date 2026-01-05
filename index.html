@@ -172,7 +172,7 @@
         <p>Expertise Code & Automation.</p>
     </footer>
 
-    <script type="text/javascript">
+   <script type="text/javascript">
       (function(d, t) {
           var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
           v.onload = function() {
@@ -181,13 +181,18 @@
               url: 'https://general-runtime.voiceflow.com',
               versionID: 'production',
               
-              // Mode INTEGRÉ (Dans le téléphone)
+              // CONFIGURATION SPÉCIALE TÉLÉPHONE
               render: {
                 mode: 'embedded',
                 target: document.getElementById('voiceflow-container')
               },
-              autostart: true, // Lance la conversation direct
               
+              // FORCE LE DÉMARRAGE IMMÉDIAT
+              autostart: true, 
+              launch: {
+                event: { type: "launch" }
+              },
+
               voice: {
                 url: "https://runtime-api.voiceflow.com"
               }
