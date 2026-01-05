@@ -156,9 +156,7 @@
             <div class="mx-auto w-full max-w-[400px] h-[600px] bg-slate-950 rounded-[3rem] border-8 border-slate-800 shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-6 bg-slate-800 rounded-b-xl z-20"></div>
                 
-                <div class="absolute inset-0 flex items-center justify-center text-slate-600 bg-slate-900" id="bot-placeholder">
-                    <p class="text-sm px-10">L'interface de démo se charge...</p>
-                </div>
+                <div id="voiceflow-container" class="absolute inset-0 bg-slate-900 z-10"></div>
             </div>
         </div>
     </section>
@@ -168,5 +166,29 @@
         <p>Expertise Code & Automation.</p>
     </footer>
 
-    </body>
+    <script type="text/javascript">
+      (function(d, t) {
+          var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+          v.onload = function() {
+            window.voiceflow.chat.load({
+              verify: { projectID: '695b1a59bd0e518db2f46c5c' },
+              url: 'https://general-runtime.voiceflow.com',
+              versionID: 'production',
+              
+              // Mode INTEGRÉ (Dans le téléphone)
+              render: {
+                mode: 'embedded',
+                target: document.getElementById('voiceflow-container')
+              },
+              autostart: true, // Lance la conversation direct
+              
+              voice: {
+                url: "https://runtime-api.voiceflow.com"
+              }
+            });
+          }
+          v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+      })(document, 'script');
+    </script>
+</body>
 </html>
