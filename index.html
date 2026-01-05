@@ -173,33 +173,26 @@
     </footer>
 
    <script type="text/javascript">
-      (function(d, t) {
-          var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-          v.onload = function() {
-            window.voiceflow.chat.load({
-              verify: { projectID: '695b1a59bd0e518db2f46c5c' },
-              url: 'https://general-runtime.voiceflow.com',
-              versionID: 'production',
-              
-              // CONFIGURATION SPÉCIALE TÉLÉPHONE
-              render: {
-                mode: 'embedded',
-                target: document.getElementById('voiceflow-container')
-              },
-              
-              // FORCE LE DÉMARRAGE IMMÉDIAT
-              autostart: true, 
-              launch: {
-                event: { type: "launch" }
-              },
-
-              voice: {
-                url: "https://runtime-api.voiceflow.com"
-              }
-            });
-          }
-          v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-      })(document, 'script');
-    </script>
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '695b1a59bd0e518db2f46c5c' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          
+          render: {
+            mode: 'embedded',
+            target: document.getElementById('voiceflow-container')
+          },
+          autostart: true 
+        }).then(() => {
+          // FORCE LE DÉMARRAGE AUTOMATIQUE DU FLOW
+          window.voiceflow.chat.proactive.push({ type: 'launch' });
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
 </body>
 </html>
