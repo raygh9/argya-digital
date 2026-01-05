@@ -172,7 +172,7 @@
         <p>Expertise Code & Automation.</p>
     </footer>
 
-   <script type="text/javascript">
+<script type="text/javascript">
   (function(d, t) {
       var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
       v.onload = function() {
@@ -180,15 +180,16 @@
           verify: { projectID: '695b1a59bd0e518db2f46c5c' },
           url: 'https://general-runtime.voiceflow.com',
           versionID: 'production',
-          
           render: {
             mode: 'embedded',
             target: document.getElementById('voiceflow-container')
           },
-          autostart: true 
+          autostart: true
         }).then(() => {
-          // FORCE LE DÉMARRAGE AUTOMATIQUE DU FLOW
-          window.voiceflow.chat.proactive.push({ type: 'launch' });
+          // 1. On efface la session précédente pour forcer un nouvel accueil
+          window.voiceflow.chat.interact({
+            type: 'launch',
+          });
         });
       }
       v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
